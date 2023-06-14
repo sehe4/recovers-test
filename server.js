@@ -18,30 +18,17 @@ const pool = new Pool({
   port: 5432
 });
 
-app.use(express.urlencoded({ extended: true }));
+// Removed duplicate middleware
 app.use(express.json());
 
 // API endpoint to handle the POST request
 app.post('/insert', (req, res) => {
-  console.log("Insertando datos")
-  // const data = JSON.parse(req.body);
+  console.log("Inserting data");
   console.log(req.body);
-  // Insert data into the PostgreSQL database
-//   pool.query(query, (err, result) => {
-//     if (err) {
-//       console.error('Error executing query:', err);
-//       res.status(500).send('Error inserting data into the database');
-//     } else {
-//       console.log('Data inserted successfully');
-//       res.status(200).send('Data inserted successfully');
-//     }
-//   });
+  res.sendStatus(200); // Send a response status of 200 OK
 });
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-
-
