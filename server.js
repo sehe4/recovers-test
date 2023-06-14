@@ -23,7 +23,6 @@ app.use(express.json());
 
 // API endpoint to handle the POST request
 app.post('/insert', (req, res) => {
-  console.log(req);
   console.log("Inserting data");
   console.log(req.body);
   res.sendStatus(200); // Send a response status of 200 OK
