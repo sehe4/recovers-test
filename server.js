@@ -23,6 +23,7 @@ app.use(express.json());
 
 // API endpoint to handle the POST request
 app.post('/insert', (req, res) => {
+  console.log("Insertando datos")
   const data = JSON.parse(req.body);
   console.log(data);
   // Insert data into the PostgreSQL database
