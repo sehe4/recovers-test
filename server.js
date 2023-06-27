@@ -24,7 +24,7 @@ app.post('/insert', (req, res) => {
 
   // Process the incoming JSON data
   latestData = req.body;
-  console.log(latestData);
+  console.log(req.body);
   // Emit the latest data to connected clients via WebSocket
   io.emit('dataUpdate', latestData);
 
