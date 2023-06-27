@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Data Update</title>
+  <script src="https://cdn.socket.io/socket.io-3.1.1.min.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('dataUpdate', (data) => {
+      // Update the webpage with the latest data
+      document.getElementById('data').innerHTML = JSON.stringify(data);
+    });
+  </script>
+</head>
+<body>
+  <h1>Real-time Data from Server</h1>
+  <div id="data"></div>
+</body>
+</html>
