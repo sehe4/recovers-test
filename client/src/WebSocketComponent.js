@@ -13,19 +13,19 @@ const WebSocketComponent = () => {
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       if (data.mensaje) {
-        console.log(data.mensaje)
         const newMessage = data.mensaje;
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         setLastPitch(newMessage.pitch);
         setLastRoll(newMessage.roll);
-        updateChart();
       }
 
     };
   }, []);
   const updateChart = () => {
+    console.log(messages);
     if (chartRef.current) {
       const chart = chartRef.current;
+      
       const pitchData = messages.map((message) => message.pitch);
       const rollData = messages.map((message) => message.roll);
       const timestamps = messages.map((message) => message.timestamp);
@@ -36,6 +36,9 @@ const WebSocketComponent = () => {
       chart.update();
     }
   };
+  useEffect(() => {
+    updateChart();
+  }, [messages]);
 
   useEffect(() => {
     if (chartRef.current) {

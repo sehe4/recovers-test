@@ -26,11 +26,6 @@ wss.on('connection', (ws, req) => {
   ws.on('close', () => {
     console.log('Cliente desconectado.');
   });
-
-  // Enviar un mensaje a todos los clientes conectados
-  wss.clients.forEach((client) => {
-    client.send(JSON.stringify({ mensaje: '¡Hola, clientes conectados!' }));
-  });
 });
 
 // Endpoint para servir la página HTML
