@@ -1,13 +1,12 @@
-import React from 'react';
+import './App.css';
 import WebSocketComponent from './WebSocketComponent';
 
-const App = () => {
+function App() {
   return (
     <div>
-      <h1>React App</h1>
-      <WebSocketComponent />
-    </div>
+    <WebSocketComponent />
+  </div>
   );
-};
+}
 
 export default App;

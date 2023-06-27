@@ -47,24 +47,9 @@ app.post('/insert', (req, res) => {
   console.log(req.body);
   // Emitir los datos más recientes a los clientes conectados a través de WebSocket
   wss.clients.forEach((client) => {
-    client.send(JSON.stringify({ evento: 'dataUpdate', datos: latestData }));
+    client.send(JSON.stringify({ mensaje: latestData }));
   });
 
   res.sendStatus(200); // Enviar un estado de respuesta de 200 OK
 });
 
-function enviarMensajeACliente(token, message, enviarVacio = false) {
-  const ws = clients.get(token);
-  let body = {};
-
-  if (enviarVacio) {
-    body = JSON.stringify({});
-  } else {
-    body = JSON.stringify({ mensaje: message });
-  }
-
-  if (ws) {
-    ws.send(body);
-    console.log('Mensaje enviado a la pantalla:', body);
-  }
-}
