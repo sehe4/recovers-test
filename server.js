@@ -9,7 +9,7 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 app.use(cors());
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 let latestData = {}; // Variable to store the latest data
 
@@ -24,7 +24,7 @@ app.post('/insert', (req, res) => {
 
   // Process the incoming JSON data
   latestData = req.body;
-  console.log(req);
+  console.log(req.body);
   // Emit the latest data to connected clients via WebSocket
   io.emit('dataUpdate', latestData);
 
